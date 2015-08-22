@@ -1,15 +1,49 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This pair of fucntions can create a matrix, calculate its inverse and store the inverse in a cache which
+## can be retrived if needed
 
-## Write a short comment describing this function
+## makeCacheMatrix is a function to create a matrix object which can cache its own inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-
+  
+  cs <- NULL
+  
+  cre <- function(z) {
+    
+    matrix(1:4, nrow = 2)
+    
+  }
+  
+  sol <- function(solve) cs <<- solve
+  
 }
 
 
-## Write a short comment describing this function
+
+## cacheSolve is a function that will compute the inverse of a matrix unless 
+## that calculation has already been done and the result cached, in this case
+## the function retireves the cached result
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  
+  
+  
+  
+  cs <- x$makeCacheMatrix()
+  
+  if(!is.null(cs)) {
+    
+    message("getting cached data")
+    
+    return(cs)
+    
+  }
+  
+  data <- x$get()
+  
+  cs <- solve(data, ...)
+  
+  ##x$setmean(cs)
+  
+  cs
+  
 }
